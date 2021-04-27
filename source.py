@@ -21,7 +21,7 @@ def receive_json_response(ws):
 def binance(content):
     content = content.split()
     print(content[0])
-    if content[0] == "@ABC": #Check if message starts with mentioned role
+    if content[0] == "@ABC": #Check if message starts with role mention
         symbol = content[1].replace('#', '').replace('/', '')
         buy_prices = content[7].split('-')
         sell_prices = content[12].split('-')
@@ -186,6 +186,6 @@ if __name__ == "__main__":
             data = binance(content)
             if data != 0:
                 signal = Signal(data[0], data[1], data[2], data[3])
-                # signal.make_order()
+                signal.make_order()
 
 main()
